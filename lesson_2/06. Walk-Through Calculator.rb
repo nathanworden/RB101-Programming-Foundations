@@ -42,6 +42,9 @@
 
 
 
+# Book Answer:
+
+# psudo code
 # ask the user for two numbers
 # ask the user for an operation to perform
 # perform the operation on the two numbers
@@ -74,7 +77,34 @@ end
 
 Kernel.puts("The result is #{result}")
 
+# Discussion
+# Tips and Gotchas
+# Even in this simple 20-line program, there are several interesting gotchas.
 
+# In a conditional, take care to make sure you're doing an equality comparison (==), as opposed to an assignment (=).
+
+# if operator == '1'  # ok
+# ...
+# if operator = '1'   # will always return true
+# Pay attention to what object you're comparing against. It makes a huge difference.
+
+# if operator == 1
+# # vs
+# if operator == '1'
+# Understand the concept of "integer division".
+
+# The String#to_i and String#to_f methods are very handy, but understand their limitations. (Hint: read their documentation.)
+
+# Local variables initialized within an if can be accessed outside of the if.
+
+# In Ruby, if expressions can return a value.
+
+# answer = if true
+#            'yes'
+#          else
+#            'no'
+#          end
+# Kernel.puts(answer)       # => yes
 
 
 
