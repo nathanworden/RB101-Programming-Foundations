@@ -104,3 +104,52 @@
 # a method that takes an array of strings, and returns a string that is all those strings concatenated together
 # a method that takes an array of integers, and returns a new array with every other element
 # No need to code here, just practice writing logic out in English.
+
+
+
+# def find_greatest(numbers)
+#   saved_number = nil
+
+#   numbers.each do |num|
+#     saved_number ||= num
+#     if saved_number >= num
+#       next
+#     else
+#       saved_number = num
+#     end
+#   end
+
+#   puts saved_number
+# end
+
+
+# array = [5, 3, 78, 3, 1, 34, 2, 3, 4, 5]
+
+# find_greatest(array)
+
+
+
+# write out pseudo-code (both casual and formal) that does the following:
+
+# a method that returns the sum of two integers
+# Given two integers
+# add the first integer to the second integer and save the result in a new variable
+# print out the new variable.
+
+# a method that takes an array of strings, and returns a string that is all those strings concatenated together
+# Given an array of strings
+# Join all the strings together and save the result in a variable
+# Print out the variable
+
+
+# a method that takes an array of integers, and returns a new array with every other element
+# Given an array of integers
+# Iterate through the array, and for each integer, 
+# If the index of the integer is odd, add it to a new array called every_other_element
+# return every_other_element
+
+
+
+
+
+
