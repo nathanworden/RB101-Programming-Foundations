@@ -1,0 +1,11 @@
+  welcome: "Welcome to A YAML Calculator! Enter your name:"
+  valid_name: "Make sure to enter a valid name."
+  number1: "What's the first number?"
+  invalid_number: "Hmm... that does't look like a valid number"
+  number2: "What's the second number?"
+  must_choose: "Must choose 1, 2, 3, or 4"
+  more?: "Do you want to perform another calculation? (Y to calculate again)"
+  goodbye: "Thank you for using the calculator. Good bye!"
+# es:
+#   welcome: "Bienvenido a la calculadora! Entre su nombre:"
+#   valid_name: "Asegúrese de entrar un nombre válido."
