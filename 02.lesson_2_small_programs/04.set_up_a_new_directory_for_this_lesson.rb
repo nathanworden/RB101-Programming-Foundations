@@ -1,0 +1,4 @@
+# Set up a new directory for this lesson
+# Now, you should be working in a new local git repository. Recall that you can turn any directory locally into a git repo with the git init command. Just make sure to not nest git repositories within each other. If you've forgotten how to create a git repository locally, review this chapter.
+
+# Within your new git repo, create a new directory for this lesson. Call it lesson_2 or something that makes sense to you. The assignments you do should be created in this new directory. Later, we'll set up some configurations for this directory and will affect all files within it.
