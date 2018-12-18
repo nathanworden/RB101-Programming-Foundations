@@ -16,15 +16,17 @@
 # Algorithm
 # Divide the sum of all the elements in the array by the length of the array.
 
-def average(array)
-  array.sum / array.length
-end
+# MY ANSWER
+
+# def average(array)
+#   array.sum / array.length
+# end
 
 
-puts average([47, 78, 9876, 2, 3, 5, 7]) == 1431
-puts average([1, 5, 87, 45, 8, 8]) == 25
-puts average([9, 47, 23, 95, 16, 52]) == 40
-puts average([1, 2, 3]) == 2
+# puts average([47, 78, 9876, 2, 3, 5, 7]) == 1431
+# puts average([1, 5, 87, 45, 8, 8]) == 25
+# puts average([9, 47, 23, 95, 16, 52]) == 40
+# puts average([1, 2, 3]) == 2
 
 
 # BOOK ANSWER
@@ -47,3 +49,27 @@ puts average([1, 2, 3]) == 2
 # def average(array)
 #   array.sum.to_f / array.length
 # end
+
+# More Exploration with .reduce
+
+# def average(array)
+#   array.reduce(:+) / array.size
+# end
+
+# puts average([1, 5, 87, 45, 8, 8]) == 25
+# puts average([9, 47, 23, 95, 16, 52]) == 40
+
+# ----------------------------------------------------------------
+# More Exploration with .reduce
+
+def average(numbers)
+  output = numbers.reduce do |accumulator, num|
+                    accumulator + num
+                  end
+  output / numbers.size
+end
+
+
+puts average([1, 5, 87, 45, 8, 8]) == 25
+puts average([9, 47, 23, 95, 16, 52]) == 40
+
