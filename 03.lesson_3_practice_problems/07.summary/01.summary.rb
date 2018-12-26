@@ -1,0 +1,4 @@
+# Summary
+# Hopefully these practice problems were both fun and challenging, and along the way, you were able to exercise your debugging skills and problem solving skills. If you found yourself constantly looking up Ruby documentation or Googling for answers, that's completely normal and expected. There's no way you can remember everything needed to solve interesting problems at this point. Keep referring to documentation and keep Googling; the only way to move knowledge into long term memory is to keep running into them.
+
+# In some of these practice problems you will have worked with Strings, Arrays, and Hashes. Working with these particular structures is an important part of programming - both with Ruby and in general. In the next lesson we will explore them in much more detail.
