@@ -156,7 +156,7 @@ end
 
 
 
-# The code for this with all the helper methods:
+The code for this with all the helper methods:
 
 def substrings(str)
   result = []
@@ -187,6 +187,37 @@ def palindrome_substrings(str)
   end
   result
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
