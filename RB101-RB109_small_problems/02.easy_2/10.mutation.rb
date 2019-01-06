@@ -41,7 +41,7 @@ puts array2
 
 # Got this one wrong.
 
-puts 'yikes'
+puts 'yikes yikes'
 
 
 
