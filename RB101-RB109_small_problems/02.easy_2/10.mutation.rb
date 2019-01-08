@@ -9,6 +9,34 @@ puts array2
 
 
 
+
+
+array1 = ['Moe', 'Larry', 'Curly', 'Shemp', 'Harpo', 'Chico', 'Groucho', 'Zeppo')
+array2 = []
+
+
+array1.each { |value| array2 << value }
+
+# now array2 = ['Moe', 'Larry', 'Curly', 'Shemp', 'Harpo', 'Chico', 'Groucho', 'Zeppo']
+
+
+array1.each { |value| value.upcase! if value.start_with?('C', 'S') }
+
+# now array1 = ['Moe', 'Larry', 'CURLY', 'SHEMP', 'Harpo', 'CHICO', 'Groucho', 'Zeppo']
+
+
+puts array2
+
+# because when we did array2 << value, we were passing references to array2,
+# when those objects are changed that shows up in all of the varialbles that 
+# are bond to those objects. So CURLY, SHEMP, and CHICO will also be 
+# upcased in array2.
+
+
+
+
+
+
 # array1 = ['Moe', 'Larry', 'Curly', 'Shemp', 'Harpo', 'Chico', 'Groucho', 'Zeppo']
 # array2 = []
 
@@ -41,7 +69,6 @@ puts array2
 
 # Got this one wrong.
 
-puts 'yikes yikes'
 
 
 
