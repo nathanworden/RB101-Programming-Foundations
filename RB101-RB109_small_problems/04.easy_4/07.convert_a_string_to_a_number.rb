@@ -78,12 +78,69 @@
 
 
 
+DIGITS = {'0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4, 
+          '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9,
+          'A' => 10, 'B' => 11, 'C' => 12, 'D' => 13, 'E' => 14,
+          'F' => 15
+          }
+
+# def string_to_integer(string)
+#   integers = string.chars.map {|i| DIGITS[i]}
+
+#   value = 0
+#   integers.each {|i| value = value * 10  + i}
+#   value
+# end
+
+
+# p string_to_integer('82838485') == 82838485
 
 
 
-DIGITS = { '0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4,
-           '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9
-        }
+def hexadecimal_to_integer(string)
+  digits = string.upcase.chars.map {|i| DIGITS[i]}
+
+  value = 0
+  digits.each {|i| value = value * 16 + i}
+  value
+end
+
+
+p hexadecimal_to_integer('FF') # (15*16) + 15 * 1 = 255
+p hexadecimal_to_integer('AF3') # 2803 # (16**2 * 10) + (15*16) + 3   [2560 + 240 + 3] = 2803
+p hexadecimal_to_integer('4D9f')  # 9871# (16**3 * 4) + (16**2 * 13) + (16 * 9) + 16 = [16,384 + 3,328 + 144 + 15]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=begin
+#DIGITS = { '0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4,
+#          '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9
+#       }
 
 
 def string_to_integer(string)
@@ -99,6 +156,7 @@ end
 
 
 p string_to_integer('4321') #== 4321
+=end
 
 
 
