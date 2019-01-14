@@ -20,21 +20,23 @@
 
 # Code
 
-# DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 
-  # def integer_to_string(integer)
-  #   holder = []
-  #   holder << integer.digits.reverse.map {|i| DIGITS[i] }
-  #   holder.join
-  # end
-
-
-def integer_to_string(number)
-  number.digits.reverse.join
+def integer_to_string(integer)
+  holder = []
+  holder << integer.digits.reverse.map {|i| DIGITS[i] }
+  holder.join
 end
 
 
-p integer_to_string(4321) == '4321'
-p integer_to_string(0) == '0'
-p integer_to_string(5000) == '5000'
+
+# Someone smarter than me realized you don't have to use .map:
+# def integer_to_string(number)
+#   number.digits.reverse.join
+# end
+
+
+p integer_to_string(4321) #== '4321'
+p integer_to_string(0) #== '0'
+p integer_to_string(5000) #== '5000'
