@@ -31,10 +31,6 @@ end
 
 
 
-# Someone smarter than me realized you don't have to use .map:
-# def integer_to_string(number)
-#   number.digits.reverse.join
-# end
 
 
 p integer_to_string(4321) #== '4321'
