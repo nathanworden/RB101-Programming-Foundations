@@ -1,0 +1,3 @@
+# test
+
+puts Time.now
