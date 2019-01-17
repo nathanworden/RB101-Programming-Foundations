@@ -34,12 +34,6 @@ p signed_integer_to_string(0) == '0'
 
 
 
-
-
-
-
-
-
 # Book answer
 
 
