@@ -113,13 +113,25 @@ def after_midnight(time_str)
 end
 
 
-
-p after_midnight('20:20') #== 1220
-
-
-
+def before_midnight(time_str)
+  (MINUTES_PER_DAY - after_midnight(time_str)) % MINUTES_PER_DAY
+end
 
 
+
+
+p after_midnight('00:00') == 0
+p before_midnight('00:00') == 0
+p after_midnight('12:34') == 754
+p before_midnight('12:34') == 686
+p after_midnight('13:49') == 829
+p before_midnight('13:49') == 611
+p after_midnight('20:20') == 1220
+p before_midnight('20:20') == 220
+p after_midnight('23:59') == 1439
+p before_midnight('23:59') == 1
+p after_midnight('24:00') == 0
+p before_midnight('24:00') == 0
 
 
 
