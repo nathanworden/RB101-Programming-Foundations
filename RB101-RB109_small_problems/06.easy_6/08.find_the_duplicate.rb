@@ -58,7 +58,11 @@ p find_dup([18,  9, 36, 96, 31, 19, 54, 75, 42, 15,
            40, 23, 71, 62, 73, 32, 43, 24,  4, 56,
            7,  34, 57, 74, 45, 11, 88, 67,  5, 58]) #== 73
 
+# Book Answer
 
+# def find_dup(array)
+#   array.find { |element| array.count(element) == 2 }
+# end
 
 
 
