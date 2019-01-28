@@ -31,22 +31,23 @@
 
 
 # Code
-def word_cap(string)
-  string.downcase.split.each {|word| word[0] = word[0].upcase}.join(" ")
-end
-
-
 # def word_cap(string)
-#   split_on_word = string.split
-#   split_on_word.each do |word| 
-#     cap_index = word.chars.find_index {|char| char.match(/[a-zA-Z]/)}
-#     word[cap_index] = word[cap_index].upcase!
-#   end.join(" ")
+#   string.downcase.split.each {|word| word[0] = word[0].upcase}.join(" ")
 # end
 
-p word_cap('four score and seven') #== 'Four Score And Seven'
-p word_cap('the javaScript language') #== 'The Javascript Language'
-puts word_cap('this is a "quoted" word') #== 'This Is A "quoted" Word'
 
+def word_cap(string)
+  split_on_word = string.split
+  split_on_word.each do |word| 
+    cap_index = word.chars.find_index {|char| char.match(/[a-zA-Z]/)}
+    word[cap_index] = word[cap_index].upcase!
+  end.join(" ")
+end
+
+# p word_cap('four score and seven') #== 'Four Score And Seven'
+# p word_cap('the javaScript language') #== 'The Javascript Language'
+# puts word_cap('this is a "quoted" word') #== 'This Is A "quoted" Word'
+
+p word_cap('this is a "quoted" word') == 'This Is A "Quoted" Word'
 
 
