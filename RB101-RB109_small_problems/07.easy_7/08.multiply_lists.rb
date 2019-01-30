@@ -38,5 +38,28 @@ def multiply_list(array1, array2)
   output
 end
 
+# p multiply_list([3, 5, 7], [9, 10, 11]) == [27, 50, 77]
+# p multiply_list([8, 3, 4, 9, 1, 23], [2, 3, 4, 5, 6, 7]) == [16, 9, 16, 45, 6, 161]
+
+
+
+# Further Exploration using .zip
+
+def multiply_list(array1, array2)
+  array1.zip(array2).map! {|array| array.reduce(:*)}
+end
+
+
 p multiply_list([3, 5, 7], [9, 10, 11]) == [27, 50, 77]
 p multiply_list([8, 3, 4, 9, 1, 23], [2, 3, 4, 5, 6, 7]) == [16, 9, 16, 45, 6, 161]
+
+
+
+
+
+
+
+
+
+
+
