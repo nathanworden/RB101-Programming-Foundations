@@ -70,17 +70,17 @@
 #   new_array
 # end
 
+# Wrong!
+# def oddities(array)
+#   array.select {|item| array.index(item).even?}
+# end
 
-def oddities(array)
-  array.select {|item| array.index(item).even?}
-end
 
-
-p oddities([2, 3, 4, 5, 6]) #== [2, 4, 6]
-p oddities([1, 2, 3, 4, 5, 6]) #== [1, 3, 5]
-p oddities(['abc', 'def']) #== ['abc']
-p oddities([123]) #== [123]
-p oddities([]) #== []
+# p oddities([2, 3, 4, 5, 6]) #== [2, 4, 6]
+# p oddities([1, 2, 3, 4, 5, 6]) #== [1, 3, 5]
+# p oddities(['abc', 'def']) #== ['abc']
+# p oddities([123]) #== [123]
+# p oddities([]) #== []
 
 
 
@@ -137,3 +137,97 @@ p oddities([]) #== []
 # Write a companion method that returns the 2nd, 4th, 6th, and so on elements of an array.
 
 # Try to solve this exercise in at least 2 additional ways.
+
+
+
+
+
+
+
+
+
+
+# PEDAC
+
+
+# Problem
+# Write a method that returns an Array 
+# Returned Array contains every other element of an array that is passed in as an argument.
+# Returned list should be the values in the 1st, 3rd, 5th and so on elements of the argument Array
+
+# Example / Test Cases
+# oddities([2, 3, 4, 5, 6]) == [2, 4, 6]
+# oddities([1, 2, 3, 4, 5, 6]) == [1, 3, 5]
+# oddities(['abc', 'def']) == ['abc']
+# oddities([123]) == [123]
+# oddities([]) == []
+# oddities(['B']) == ['B']
+# oddities([3, 3, 'u', 7, 'u']) == [3, 'u', 'u']
+
+# Data Structure
+# array, string, integer
+
+# Algorithm
+# define a method called 'oddities' which accepts an 'array' as an argument
+# initiate an empty array called 'result'
+# iterate through each element in 'array' pulling each element and its index
+# if the index of the element is even, push the element into the 'result' array
+# return the 'result' array
+
+# Code
+
+def oddities(array)
+  result = []
+  array.each_with_index do |element, index|
+    result << element if index.even?
+  end
+  result
+end
+
+
+p oddities([2, 3, 4, 5, 6]) == [2, 4, 6]
+p oddities([1, 2, 3, 4, 5, 6]) == [1, 3, 5]
+p oddities(['abc', 'def']) == ['abc']
+p oddities([123]) == [123]
+p oddities([]) == []
+p oddities(['B']) == ['B']
+p oddities([3, 3, 'u', 7, 'u']) == [3, 'u', 'u']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
