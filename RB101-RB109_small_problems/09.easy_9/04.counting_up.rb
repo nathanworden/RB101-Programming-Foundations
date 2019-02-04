@@ -73,9 +73,9 @@
 
 # And finally, probably my best one yet!
 
-# def sequence(integer)
-#   (1..integer).to_a
-# end
+def sequence(integer)
+  (1..integer).to_a
+end
 
 # p sequence(5) == [1, 2, 3, 4, 5]
 # p sequence(3) == [1, 2, 3]
