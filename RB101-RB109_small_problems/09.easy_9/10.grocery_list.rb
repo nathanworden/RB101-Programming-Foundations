@@ -20,11 +20,11 @@
 
 # Code
 
-# def buy_fruit(array)
-#   result = []
-#   array.each {|element| result << Array.new(element[1], element[0])}
-#   result.flatten
-# end
+def buy_fruit(array)
+  result = []
+  array.each {|element| result << Array.new(element[1], element[0])}
+  result.flatten
+end
 
 
 # p buy_fruit([["apples", 3], ["orange", 1], ["bananas", 2]]) ==

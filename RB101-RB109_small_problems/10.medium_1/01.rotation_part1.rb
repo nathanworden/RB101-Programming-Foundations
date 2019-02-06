@@ -49,14 +49,14 @@ p rotate_array(['a', 'b', 'c']) == ['b', 'c', 'a']
 p rotate_array(['a']) == ['a']
 p rotate_array(['apple', 6292, 'banana', 98, 'tritip', '1']) == [6292, 'banana', 98, 'tritip', '1', 'apple']
 
-p x = [1, 2, 3, 4]
+p ax = [1, 2, 3, 4]
 p rotate_array(x) #== [2, 3, 4, 1]   # => true
 p x #== [1, 2, 3, 4]     # => true
 
 
 # Book Answer
 # def rotate_array(array)
-#   array[1..-1] + [array[0]
+#   array[1..-1] + [array[0]]
 # end
 
 # Further Exploration
