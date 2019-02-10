@@ -1,3 +1,7 @@
+
+
+# Questions 10-20
+# The remaining questions in this quiz have a focus on reading and understanding code, so try to avoid simply running the complete code samples in order to arrive at the correct answers. Feel free to refer to documentation, and you may even want to test out individual pieces of a larger code example in irb or similar; but the point here is to read code like this and be able to parse it in order to understand what each line is doing rather than just running it and basing your answer on the output or return value.
 # Question 10 Saved
 # Identify all the code samples which are examples of selection.
 
