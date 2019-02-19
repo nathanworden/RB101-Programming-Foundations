@@ -116,7 +116,7 @@ hsh2[['a']][:a][2] = 4
 p hsh2
 
 
-=end
+
 
 
 # Practice Problem 5
@@ -132,15 +132,143 @@ munsters = {
 }
 # figure out the total age of just the male members of the family.
 
-males = munsters.select do |name, value|
-    value["gender"] == "male"
+# My first attempt (it works!)
+# males = munsters.select do |name, value|
+#     value["gender"] == "male"
+#   end
+
+# ages = males.map do |key, value|
+#          value["age"]
+#        end
+
+# p ages.reduce(:+)
+
+# Second attempt:
+
+ages = 0
+munsters.map do |name, value|
+  ages += value["age"] if value["gender"] == "male"
+end
+p ages
+
+
+# Book Answer
+total_male_age = 0
+munsters.each_value do |details|
+  total_male_age += details["age"] if details["gender"] == "male"
+end
+
+p total_male_age
+
+
+# Practice Problem 6
+
+# One of the most frequently used real-world string properties is that of "string substitution", where we take a hard-coded string and modify it with various parameters from our program.
+
+# Given this previously seen family hash, print out the name, age and gender of each family member:
+
+munsters = {
+  "Herman" => { "age" => 32, "gender" => "male" },
+  "Lily" => { "age" => 30, "gender" => "female" },
+  "Grandpa" => { "age" => 402, "gender" => "male" },
+  "Eddie" => { "age" => 10, "gender" => "male" },
+  "Marilyn" => { "age" => 23, "gender" => "female"}
+}
+# ...like this:
+
+# (Name) is a (age)-year-old (male or female).
+
+
+munsters.each do |name, details|
+  puts "#{name} is a #{details["age"]}-year-old #{details["gender"]}"
+end
+
+
+
+
+# Practice Problem 7
+
+# Given this code, what would be the final values of a and b? Try to work this out without running the code.
+
+a = 2
+b = [5, 8]
+arr = [a, b]
+
+arr[0] += 2
+arr[1][0] -= a
+
+p a
+p b
+
+p arr
+
+# My Answer WRONG
+# a = 4
+# b = [1, 8]
+
+# Correct Answer
+# a => 2
+# b => [3, 8]
+
+# The value of a didn't change because we are not referencing a at any point. This code arr[0] += 2 was modifying the array, arr not a. In effect we are assigning a new object at that index of the array so that instead of arr[0] containing a it now contains 4 - we can check this by looking at the value of arr:
+
+# arr # => [4, [3, 8]]
+# The value of b did change because b is an array and we are modifying that array by assigning a new value at index 0 of that array.
+
+=end
+
+# Practice Problem 8
+
+# Using the each method, write some code to output all of the vowels from the strings.
+
+hsh = {first: ['the', 'quick'], second: ['brown', 'fox'], third: ['jumped'], fourth: ['over', 'the', 'lazy', 'dog']}
+
+# My Answer:
+VOWELS = %w(a e i o u)
+output = []
+
+hsh.each do |num, words|
+  words.each do |word|
+    output << word.chars.select {|char| VOWELS.include?(char)}
   end
+end
 
-ages = males.map do |key, value|
-         value["age"]
-       end
+p output.flatten
 
-p ages.reduce(:+)
+# Book answer:
+vowels = 'aeiou'
+
+hsh.each do |_, value|
+  value.each do |str|
+    str.chars.each do |char|
+      puts char if VOWELS.include?(char)
+    end
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
