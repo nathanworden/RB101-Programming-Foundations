@@ -5,6 +5,8 @@
 
 # If any of the problems appear difficult at first, take the time to break them down and remember to focus on the structure of the collection object, the return value of blocks and methods and the side effects of any methods.
 
+=begin
+
 # Practice Problem 1
 # How would you order this array of number strings by descending numeric value?
 
@@ -43,6 +45,102 @@ p arr. sort {|a, b| b.to_i <=> a.to_i}
 
 
 
+#Practice Problem 2
+
+# How would you order this array of hashes based on the year of publication of each book, from the earliest to the latest?
+
+books = [
+  {title: 'One Hundred Years of Solitude', author: 'Gabriel Garcia Marquez', published: '1967'},
+  {title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', published: '1925'},
+  {title: 'War and Peace', author: 'Leo Tolstoy', published: '1869'},
+  {title: 'Ulysses', author: 'James Joyce', published: '1922'}
+]
+
+
+
+p (books.sort do |a, b|
+   a[:published] <=> b[:published]
+  end)
+
+puts
+puts
+
+p (books.sort_by do |book|
+  book[:published]
+  end)
+
+
+
+
+# Practice Problem 3
+# For each of these collection objects demonstrate how you would reference the letter 'g'.
+
+arr1 = ['a', 'b', ['c', ['d', 'e', 'f', 'g']]]
+p arr1[2][1][3]
+
+arr2 = [{first: ['a', 'b', 'c'], second: ['d', 'e', 'f']}, {third: ['g', 'h', 'i']}]
+p arr2[1][:third][0]
+
+arr3 = [['abc'], ['def'], {third: ['ghi']}]
+p arr3[2][:third][0][0]
+
+hsh1 = {'a' => ['d', 'e'], 'b' => ['f', 'g'], 'c' => ['h', 'i']}
+p hsh1['b'][1]
+
+hsh2 = {first: {'d' => 3}, second: {'e' => 2, 'f' => 1}, third: {'g' => 0}}
+p hsh2[:third].keys[0]
+#or
+p hsh2[:third].key(0)
+
+
+
+
+# Practice Problem 4
+
+# For each of these collection objects where the value 3 occurs, demonstrate how you would change this to 4.
+
+arr1 = [1, [2, 3], 4]
+arr1[1][1] = 4
+p arr1
+
+arr2 = [{a: 1}, {b: 2, c: [7, 6, 5], d: 4}, 3]
+arr2[2] = 4
+p arr2
+
+hsh1 = {first: [1, 2, [3]]}
+hsh1[:first][2][0] = 4
+p hsh1
+
+hsh2 = {['a'] => {a: ['1', :two, 3], b: 4}, 'b' => 5}
+hsh2[['a']][:a][2] = 4
+p hsh2
+
+
+=end
+
+
+# Practice Problem 5
+
+# Given this nested Hash:
+
+munsters = {
+  "Herman" => { "age" => 32, "gender" => "male" },
+  "Lily" => { "age" => 30, "gender" => "female" },
+  "Grandpa" => { "age" => 402, "gender" => "male" },
+  "Eddie" => { "age" => 10, "gender" => "male" },
+  "Marilyn" => { "age" => 23, "gender" => "female"}
+}
+# figure out the total age of just the male members of the family.
+
+males = munsters.select do |name, value|
+    value["gender"] == "male"
+  end
+
+ages = males.map do |key, value|
+         value["age"]
+       end
+
+p ages.reduce(:+)
 
 
 
@@ -58,26 +156,3 @@ p arr. sort {|a, b| b.to_i <=> a.to_i}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Solution
-
-# arr.sort do |a,b|
-#   b.to_i <=> a.to_i
-# end
-# # => ["11", "10", "9", "8", "7"]
-# The key here is understanding that strings are compared character by character, so '11' will be evaluated to be lesser than '7'. In order to compare the strings as integers, we need to convert them to integers within the block.
-
-# The second part of solving this problem is sorting the array in reverse order. To do this we simply switch the order of b and a in the block.
