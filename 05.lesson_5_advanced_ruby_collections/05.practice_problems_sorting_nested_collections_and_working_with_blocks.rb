@@ -10,12 +10,67 @@
 
 arr = ['10', '11', '9', '7', '8']
 
+# In this example, p arr.sort gets evaluted first before the do block. 
+# which means that the array is sorted based on its string values.
+# since strings are evaluated character by character, '10' comes first 
+# because it starts with a 1. The only other number that starts with
+# a 1 is '11' so then the second character gets compared. '10's second
+# character is 0 while '11's second character is 1. So '10' goes before '11'
+# The return value is ["10", "11", "7", "8", "9"]
+
 p arr.sort do |a, b|
-    b.to_i <=> a.to_i
-  end
+  a.to_i <=> b.to_i
+end
+
+# In this example, we use parenthesis to show that we want to sort the 
+# evaluated block and THEN print it out. This gives you 
+# ["7", "8", "9", "10", "11"] 
+p (arr.sort do |a,b|
+    a.to_i <=> b.to_i
+  end)
+
+# Another way to do this is to do a one line block. When you do this
+# the one line block {...} binds more tightly to arr.sort than
+# p to arr.sort, and so the block is evaluated first and the p
+# prints out ["7", "8", "9", "10", "11"]
+p arr.sort {|a, b| a.to_i <=> b.to_i}
+
+# Finally, the problem asked us to order the array of number strings
+# by descending numeric value. Thus far we have only ordered them in
+# acending numeric value. To get the order to decend, we put b before
+# a in the comparison block:
+p arr. sort {|a, b| b.to_i <=> a.to_i}
 
 
-p arr.sort {|a, b| b.to_i <=> a.to_i }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Solution
 
