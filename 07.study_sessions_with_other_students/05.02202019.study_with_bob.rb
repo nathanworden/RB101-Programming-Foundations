@@ -20,19 +20,14 @@
 
 
 # method scope
-
 # block scope
-
 # instance scope 
 
-p self.class
+# p self.class
 
-p self
+# p self
 
 # An object is an instance of a class
 # A house is an instance of a blueprint
 
-
-
-What will this code print?
 

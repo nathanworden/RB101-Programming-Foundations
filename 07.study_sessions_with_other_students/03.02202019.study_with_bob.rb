@@ -1,5 +1,5 @@
 
-# Given a string of ones and zeros as a binary number, return the decimal value as a string.
+# Given a string of ones and zeros as a binary number, return the decimal value as a string.op
 
 def decimaler(bin)
   acc = 0

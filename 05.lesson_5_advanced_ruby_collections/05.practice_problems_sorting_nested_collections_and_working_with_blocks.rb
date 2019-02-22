@@ -469,6 +469,47 @@ end)
 # Write a method that returns one UUID when called with no parameters.
 
 
+def generate_UUID
+  characters = []
+  (0..9).each {|num| characters << num}
+  ('a'..'z').each {|letter| characters << letter}
+  
+  pattern = [8, 4, 4, 4, 12]
+  
+  output = []
+  pattern.each_with_index do |num, index|
+    num.times {|i| output << characters.sample }
+    output << '-' unless output.length >= 36
+  end
+
+  output.join
+end
+
+
+p generate_UUID
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # require 'securerandom'
 
 # # One way to do this:
@@ -482,27 +523,27 @@ end)
 # p uuid
 
 
-# Book Answer:
+# # Book Answer:
 
-def generate_UUID
-  characters = []
-  (0..9).each { |digit| characters << digit.to_s }
-  ('a'..'f').each { |digit| characters << digit }
+# def generate_UUID
+#   characters = []
+#   (0..9).each { |digit| characters << digit.to_s }
+#   ('a'..'f').each { |digit| characters << digit }
 
-  uuid = ""
-  sections = [8, 4, 4, 4, 12]
-  sections.each_with_index do |section, index|
-    section.times { uuid += characters.sample }
-    uuid += '-' unless index >= sections.size - 1
-  end
+#   uuid = ""
+#   sections = [8, 4, 4, 4, 12]
+#   sections.each_with_index do |section, index|
+#     section.times { uuid += characters.sample }
+#     uuid += '-' unless index >= sections.size - 1
+#   end
 
-  uuid
-end
-
-
+#   uuid
+# end
 
 
-p generate_UUID
+
+
+# p generate_UUID
 
 
 
