@@ -477,8 +477,8 @@ def generate_UUID
   pattern = [8, 4, 4, 4, 12]
   
   output = []
-  pattern.each_with_index do |num, index|
-    num.times {|i| output << characters.sample }
+  pattern.each_with_index do |section, index|
+    section.times {|i| output << characters.sample }
     output << '-' unless output.length >= 36
   end
 
