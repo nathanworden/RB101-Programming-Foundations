@@ -28,7 +28,17 @@
 # cd .. (go back to the main scope)
 # cd - (switch between the last two scopes)
 # cd / (switch back to the top level scope)
+# whereami (shows you 5 lines of code above and 5 lines of code below where you are)
+# wheream i 15 (shows you 15 lines of code above and 15 lines of code below where you are)
 
+# pry-byebug
+# extends pry with some additional commands:
+# next
+# step
+# continue
+
+# Similar gems exist such as pry-nav and pry-debugger
+# The concept of stepping through and into code is not limited to 'pry' or Ruby
 
 # Invoking pry at runtime
 # Using binding.pry
@@ -84,16 +94,66 @@
 
 
 
+# require 'pry'
+
+# a = 0
+# b = 0
+
+# loop do a += 1
+#   binding.pry 
+#   b += 1
+#   break if b >= 3
+# end
+
+
+
+
+#*********************************
+
+# require 'pry'
+
+# def select_nums(arr)
+#   new_arr = []
+#   arr.each do |num|
+#     binding.pry
+#     new_arr << num if num.odd? && (num <= 15 || num % 3 == 0)
+#   end
+#   new_arr
+# end
+
+# p select_nums([1, 2, 5, 6, 9, 12, 15, 17, 19, 21]) == [1, 5, 9, 15, 21]
+# p select_nums([6, 12, 18]) == []
+# # p select_nums([3, 5, 7, 11, 15, 21]) == [3, 5, 7, 11, 15, 21]
+
+ 
+
+#*********************************
+
+
 require 'pry'
+require 'pry-byebug'
 
-a = 0
-b = 0
-
-loop do a += 1
-  binding.pry 
-  b += 1
-  break if b >= 3
+def fizzbuzz(arr)
+  arr.map do |num|
+    binding.pry
+    if num % 5 == 0 && num % 3 == 0
+    'FizzBuzz'
+    elsif num % 5 == 0
+      'Buzz'
+    elsif num % 3 == 0
+      'Fizz'
+    else
+      num
+    end
+  end
 end
+
+
+p fizzbuzz([1, 3, 5, 6, 7, 8, 10, 3 ,15, 9]) == [1, 'Fizz', 'Buzz', 'Fizz', 7, 8, 'Buzz', 'Fizz', 'FizzBuzz', 'Fizz']
+
+
+
+
 
 
 
