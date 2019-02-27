@@ -11,6 +11,8 @@
 # 9. If yes, go to #1
 #10. Good bye!
 
+require 'pry'
+require 'pry-byebug'
 
 def display_board(brd)
   puts ""
@@ -30,10 +32,53 @@ end
 
 def initialize_board
   new_board = {}
-  (1..9).each {|num| new_board[num] = 'X'}
+  (1..9).each {|num| new_board[num] = num}
   new_board
 end
 
 
 board = initialize_board
 display_board(board)
+
+puts "Make your move. State the number corrisponding to the sqaure that you want to\
+ put your 'X' in"
+player_square = gets.chomp.to_i
+
+def player_move(square)
+  new_board = {}
+  (1..9).each {|num| new_board[num] = num}
+  new_board[square] = 'X'
+  new_board
+end
+
+
+board = player_move(player_square)
+display_board(board)
+
+
+def computer_move(current_board)
+  possible_squares = (1..9).to_a
+  taken = []
+  current_board.select do |key, value|
+    if value == 'X'
+      taken << key
+    end
+  end
+  possible_squares = possible_squares.delete_if do |num|
+    taken.include?(num)
+  end
+  computer_choice = possible_squares.rand
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
