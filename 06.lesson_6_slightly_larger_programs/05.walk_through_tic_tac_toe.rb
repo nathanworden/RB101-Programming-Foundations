@@ -11,25 +11,28 @@
 # 9. If yes, go to #1
 #10. Good bye!
 
+
+require "pry"
+
 def prompt(msg)
-  puts " => #{msg}"
+  puts "=> #{msg}"
 end
 
 def display_board(brd)
   puts ""
-  puts "     |     |"
+  puts "     |     |   "
   puts "  #{brd[1]}  |  #{brd[2]}  |  #{brd[3]}"
-  puts "     |     |"
-  puts '-----+-----+-----'
-  puts '     |     |'
+  puts "     |     |   "
+  puts "-----+-----+-----"
+  puts "     |     |   "
   puts "  #{brd[4]}  |  #{brd[5]}  |  #{brd[6]}"
-  puts '     |     |'
-  puts '-----+-----+-----'
-  puts '     |     |'
+  puts "     |     |   "
+  puts "-----+-----+-----"
+  puts "     |     |   "
   puts "  #{brd[7]}  |  #{brd[8]}  |  #{brd[9]}"
-  puts '     |     |'
-  puts ''
+  puts "     |     |   "
 end
+
 
 def initialize_board
   new_board = {}
@@ -38,33 +41,19 @@ def initialize_board
 end
 
 def player_places_piece(brd)
- square = ''
-  loop do
-    prompt "Choose a square (1-9):"
-    square = gets.chomp.to_i
-    if 
-      break
-    else
-      prompt "Sorry, that's not a valid choice."
-    end
-      
-    end
-  end
+  prompt "Choose a square (1-9):"
+  square = gets.chomp.to_i
   brd[square] = 'X'
+
 end
+
 
 board = initialize_board
 display_board(board)
 
-
 player_places_piece(board)
 puts board.inspect
 display_board(board)
-
-
-
-
-
 
 
 
