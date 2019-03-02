@@ -11,6 +11,10 @@
 # 9. If yes, go to #1
 #10. Good bye!
 
+def prompt(msg)
+  puts " => #{msg}"
+end
+
 def display_board(brd)
   puts ""
   puts "     |     |"
@@ -29,9 +33,48 @@ end
 
 def initialize_board
   new_board = {}
-  (1..9).each {|num| new_board[num] = 'X'}
+  (1..9).each {|num| new_board[num] = ' '}
   new_board
+end
+
+def player_places_piece(brd)
+ square = ''
+  loop do
+    prompt "Choose a square (1-9):"
+    square = gets.chomp.to_i
+    if 
+      break
+    else
+      prompt "Sorry, that's not a valid choice."
+    end
+      
+    end
+  end
+  brd[square] = 'X'
 end
 
 board = initialize_board
 display_board(board)
+
+
+player_places_piece(board)
+puts board.inspect
+display_board(board)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
