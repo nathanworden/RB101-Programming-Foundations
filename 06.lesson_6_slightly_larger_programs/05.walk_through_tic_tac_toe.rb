@@ -41,10 +41,17 @@ def initialize_board
 end
 
 def player_places_piece(brd)
-  prompt "Choose a square (1-9):"
-  square = gets.chomp.to_i
-  brd[square] = 'X'
+  square = ''
+  loop do
+    prompt "Choose a square (1-9):"
+    square = gets.chomp.to_i
+    if brd.keys
+      break
+    else
+      prompt "Sorry, that's not a valid choice."
+  end
 
+  brd[square] = 'X'
 end
 
 
