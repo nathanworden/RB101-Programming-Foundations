@@ -11,63 +11,16 @@
 # 9. If yes, go to #1
 # 10. Good bye!
 
-require 'pry'
-
-def prompt(msg)
-  puts "=> #{msg}"
-end
-
-def display_board(brd)
-  puts ""
-  puts "     |     |     "
-  puts "  #{brd[1]}  |  #{brd[2]}  |  #{brd[3]}  "
-  puts "     |     |     "
-  puts "-----+-----+-----"
-  puts "     |     |     "
-  puts "  #{brd[4]}  |  #{brd[5]}  |  #{brd[6]}  "
-  puts "     |     |     "
-  puts "-----+-----+-----"
-  puts "     |     |     "
-  puts "  #{brd[7]}  |  #{brd[8]}  |  #{brd[9]}  "
-  puts "     |     |     "
-  puts ""
-end
-
-def initialize_board
-  new_board = {}
-  (1..9).each {|num| new_board[num] = ' '}
-  new_board
-end
-
-def empty_squares(brd)
-  brd.keys.select{|num| brd[num] == ' '}
-end
-
-def player_places_piece!(brd)
-  square = ''
-  loop do
-    prompt "Pick a square #{empty_squares(brd)}:"
-    square = gets.chomp.to_i
-    break if empty_squares(brd).include?(square)
-    prompt "That is not a valid choice. Please choose an empty square"
-  end
-  brd[square] = 'X'
-end
-
-def computer_places_piece!(brd)
-  square = empty_squares(brd).sample
-  brd[square] = 'O'
-end
 
 
-board = initialize_board
 
-display_board(board)
 
-player_places_piece!(board)
 
-computer_places_piece!(board)
-display_board(board)
+
+
+
+
+
 
 
 
