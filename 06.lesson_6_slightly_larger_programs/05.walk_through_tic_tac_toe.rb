@@ -40,13 +40,17 @@ def initialize_board
   new_board
 end
 
+def empty_squares(brd)
+
+
 def player_places_piece(brd)
   square = ''
   loop do
     prompt "Choose a square (1-9):"
     square = gets.chomp.to_i
-    if brd.keys
+    if brd.keys.select{|num| brd[num] == ' ' }.include?(square)
       break
+    }
     else
       prompt "Sorry, that's not a valid choice."
   end
