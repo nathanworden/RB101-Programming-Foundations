@@ -11,65 +11,60 @@
 # 9. If yes, go to #1
 # 10. Good bye!
 
-require 'pry'
-require 'pry-byebug'
-
-INITIAL_MARKER = ' '
 PLAYER_MARKER = 'X'
 COMPUTER_MARKER = 'O'
+INITIAL_MARKER = ' '
 
 def prompt(msg)
-  puts "=> #{msg}"
+  puts "#{msg}"
 end
 
-# rubocop: disable Metrics/AbcSize
 def display_board(brd)
   system 'clear'
   puts "You're a #{PLAYER_MARKER}. Computer is #{COMPUTER_MARKER}."
   puts ""
-  puts "     |     |     "
+  puts "     |     |"
   puts "  #{brd[1]}  |  #{brd[2]}  |  #{brd[3]}  "
-  puts "     |     |     "
+  puts "     |     |"
   puts "-----+-----+-----"
-  puts "     |     |     "
+  puts "     |     |"
   puts "  #{brd[4]}  |  #{brd[5]}  |  #{brd[6]}  "
-  puts "     |     |     "
+  puts "     |     |"
   puts "-----+-----+-----"
-  puts "     |     |     "
+  puts "     |     |"
   puts "  #{brd[7]}  |  #{brd[8]}  |  #{brd[9]}  "
-  puts "     |     |     "
+  puts "     |     |"
   puts ""
 end
-# rubocop: enable Metrics/AbcSize
 
 def initialize_board
-  new_board = {}
-  (1..9).each { |num| new_board[num] = INITIAL_MARKER }
-  new_board
+  new_hash = {}
+  (1..9).each {|num| new_hash[num] = INITIAL_MARKER}
+  new_hash
 end
 
-def empty_square?(brd)
-  brd.keys.select { |key| brd[key] == INITIAL_MARKER }
+def empty_square(brd)
+  brd.keys.select {|key| brd[key] == INITIAL_MARKER}
 end
 
-def player_places_piece!(brd)
+def player_places_piece(brd)
   square = ''
   loop do
-    prompt "Choose a square #{empty_square?(brd).join(', ')}"
+    prompt "Choose a space on the board #{empty_square(brd).join(', ')}"
     square = gets.chomp.to_i
-    break if empty_square?(brd).include?(square)
-    puts "That is not a valid square"
+    break if empty_square(brd).include?(square)
+    prompt "That is not a valid square. Please choose an empty square"
   end
   brd[square] = PLAYER_MARKER
 end
 
-def computer_places_piece!(brd)
-  square = empty_square?(brd).sample
+def computer_places_piece(brd)
+  square = empty_square(brd).sample
   brd[square] = COMPUTER_MARKER
 end
 
 def board_full?(brd)
-  empty_square?(brd).empty?
+  empty_square(brd).empty?
 end
 
 def someone_won?(brd)
@@ -77,18 +72,18 @@ def someone_won?(brd)
 end
 
 def detect_winner(brd)
-  winning_lines = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
+  winning_lines = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] +
                   [[1, 4, 7], [2, 5, 8], [3, 6, 9]] +
                   [[1, 5, 9], [3, 5, 7]]
   winning_lines.each do |line|
     if brd[line[0]] == PLAYER_MARKER &&
        brd[line[1]] == PLAYER_MARKER &&
        brd[line[2]] == PLAYER_MARKER
-      return 'Player'
+       return "Player"
     elsif brd[line[0]] == COMPUTER_MARKER &&
           brd[line[1]] == COMPUTER_MARKER &&
           brd[line[2]] == COMPUTER_MARKER
-      return 'Computer'
+        return "Computer"
     end
   end
   nil
@@ -100,10 +95,10 @@ loop do
   loop do
     display_board(board)
 
-    player_places_piece!(board)
+    player_places_piece(board)
     break if someone_won?(board) || board_full?(board)
 
-    computer_places_piece!(board)
+    computer_places_piece(board)
     break if someone_won?(board) || board_full?(board)
   end
 
@@ -115,9 +110,10 @@ loop do
     prompt "It's a tie!"
   end
 
-  prompt "Would you like to play again?"
+  prompt "Do you want to play again?"
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
+
 end
 
-prompt "Thank you for playing tic-tac-toe! Goodbye."
+prompt "Thank you for playing Tic Tac Toe!"
