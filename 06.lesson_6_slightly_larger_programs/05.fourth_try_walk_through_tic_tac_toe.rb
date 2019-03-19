@@ -10,15 +10,17 @@
 # 8. Play again?
 # 9. If yes, go to #1
 # 10. Good bye!
+=begin
 
 PLAYER_MARKER = 'X'
 COMPUTER_MARKER = 'O'
 INITIAL_MARKER = ' '
 
 def prompt(msg)
-  puts "#{msg}"
+  puts "=> #{msg}"
 end
 
+# rubocop: disable Metrics/AbcSize
 def display_board(brd)
   system 'clear'
   puts "You're a #{PLAYER_MARKER}. Computer is #{COMPUTER_MARKER}."
@@ -39,12 +41,12 @@ end
 
 def initialize_board
   new_hash = {}
-  (1..9).each {|num| new_hash[num] = INITIAL_MARKER}
+  (1..9).each { |num| new_hash[num] = INITIAL_MARKER }
   new_hash
 end
 
 def empty_square(brd)
-  brd.keys.select {|key| brd[key] == INITIAL_MARKER}
+  brd.keys.select { |key| brd[key] == INITIAL_MARKER }
 end
 
 def player_places_piece(brd)
@@ -76,14 +78,10 @@ def detect_winner(brd)
                   [[1, 4, 7], [2, 5, 8], [3, 6, 9]] +
                   [[1, 5, 9], [3, 5, 7]]
   winning_lines.each do |line|
-    if brd[line[0]] == PLAYER_MARKER &&
-       brd[line[1]] == PLAYER_MARKER &&
-       brd[line[2]] == PLAYER_MARKER
-       return "Player"
-    elsif brd[line[0]] == COMPUTER_MARKER &&
-          brd[line[1]] == COMPUTER_MARKER &&
-          brd[line[2]] == COMPUTER_MARKER
-        return "Computer"
+    if brd.values_at(*line).count(PLAYER_MARKER) == 3
+      return "Player"
+    elsif brd.values_at(*line).count(COMPUTER_MARKER) == 3
+      return "Computer"
     end
   end
   nil
@@ -113,7 +111,30 @@ loop do
   prompt "Do you want to play again?"
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
-
 end
 
 prompt "Thank you for playing Tic Tac Toe!"
+
+=end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
