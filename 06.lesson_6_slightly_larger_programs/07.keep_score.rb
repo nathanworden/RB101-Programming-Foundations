@@ -1,4 +1,4 @@
-# Tic Tac Toe
+# Keep Score
 
 require 'pry'
 
@@ -70,33 +70,9 @@ loop do
     brd[square] = PLAYER_MARKER
   end
 
-  def find_at_risk_square(line, brd, marker)
-    if brd.values_at(*line).count(marker) == 2
-      brd.select{|k,v| line.include?(k) && v == INITIAL_MARKER}.keys.first
-    else
-      nil
-    end
-  end
-
   def computer_places_piece!(brd)
-    square = nil
-    WINNING_LINES.each do |line|
-      square = find_at_risk_square(line, brd, COMPUTER_MARKER)
-      break if square
-    end
-    if !square
-      WINNING_LINES.each do |line|
-        square = find_at_risk_square(line, brd, PLAYER_MARKER)
-        break if square
-      end
-    end
-    if brd[5] == INITIAL_MARKER
-      square = 5
-    end
-    if !square
-      square = empty_squares(brd).sample
-    end
-    brd[square] = COMPUTER_MARKER
+        square = empty_squares(brd).sample
+        brd[square] = COMPUTER_MARKER
   end
 
   def board_full?(brd)
@@ -108,7 +84,16 @@ loop do
   end
 
   def detect_winner(brd)
-    WINNING_LINES.each do |line|   
+    WINNING_LINES.each do |line|
+      # if brd[line[0]] == PLAYER_MARKER &&
+      #    brd[line[1]] == PLAYER_MARKER &&
+      #    brd[line[2]] == PLAYER_MARKER
+      #   return 'Player'
+      # elsif brd[line[0]] == COMPUTER_MARKER &&
+      #    brd[line[1]] == COMPUTER_MARKER &&
+      #    brd[line[2]] == COMPUTER_MARKER
+      #   return 'Computer'
+      # end    
       if brd.values_at(*line).count(PLAYER_MARKER) == 3
         return 'Player'
       elsif brd.values_at(*line).count(COMPUTER_MARKER) == 3

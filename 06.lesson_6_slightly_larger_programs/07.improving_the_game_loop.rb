@@ -5,6 +5,7 @@ require 'pry'
 INITIAL_MARKER = ' '
 PLAYER_MARKER = 'X'
 COMPUTER_MARKER = 'O'
+current_player = 'player'
 WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] +  # rows
                 [[1, 4, 7], [2, 5, 8], [3, 6, 9]] +  # columns
                 [[1, 5, 9], [3, 5, 7]]                # diagnals
@@ -99,6 +100,22 @@ loop do
     brd[square] = COMPUTER_MARKER
   end
 
+  def place_piece!(board, current_player)
+    if current_player == 'player'
+      player_places_piece!(board)
+    elsif current_player == 'computer'
+      computer_places_piece!(board)
+    end
+  end
+
+  def alternate_player(current_player)
+    if current_player == 'player'
+      current_player = 'computer'
+    elsif current_player == 'computer'
+      current_player = 'player'
+    end
+  end
+
   def board_full?(brd)
     empty_squares(brd).empty?
   end
@@ -122,11 +139,8 @@ loop do
 
     loop do
       display_board(board, computer_wins, player_wins, ties)
-
-      player_places_piece!(board)
-      break if someone_won?(board) || board_full?(board)
-
-      computer_places_piece!(board)
+      place_piece!(board, current_player)
+      current_player = alternate_player(current_player)
       break if someone_won?(board) || board_full?(board)
     end
 
@@ -152,47 +166,6 @@ loop do
 end
 
 
-#   prompt "Play again? (y or n)"
-#   answer = gets.chomp
-#   break unless answer.downcase.start_with?('y')
-# end
-
 prompt "Thanks for playing Tac Tac Toe! Goodbye!"
-
-
-
-
-
-
-# def joinor(arr, delimiter=', ', word='or')
-#   case arr.size
-#   when 0 then ''
-#   when 1 then arr.first
-#   when 2 then arr.join(" #{word} ")
-#   else
-#     arr[-1] = "#{word} #{arr.last}"
-#     arr.jion(delimeter)
-#   end
-# end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

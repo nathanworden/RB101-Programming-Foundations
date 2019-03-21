@@ -1,4 +1,4 @@
-# Tic Tac Toe
+# Keep Score
 
 require 'pry'
 
@@ -123,10 +123,11 @@ loop do
     loop do
       display_board(board, computer_wins, player_wins, ties)
 
-      player_places_piece!(board)
+      computer_places_piece!(board)
+      display_board(board, computer_wins, player_wins, ties)
       break if someone_won?(board) || board_full?(board)
 
-      computer_places_piece!(board)
+      player_places_piece!(board)
       break if someone_won?(board) || board_full?(board)
     end
 

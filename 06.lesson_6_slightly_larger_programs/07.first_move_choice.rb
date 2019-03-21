@@ -1,10 +1,11 @@
-# Tic Tac Toe
+# Keep Score
 
 require 'pry'
 
 INITIAL_MARKER = ' '
 PLAYER_MARKER = 'X'
 COMPUTER_MARKER = 'O'
+FIRST_MOVE = "choose"
 WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] +  # rows
                 [[1, 4, 7], [2, 5, 8], [3, 6, 9]] +  # columns
                 [[1, 5, 9], [3, 5, 7]]                # diagnals
@@ -120,6 +121,17 @@ loop do
 
     board = initialize_board
 
+  first_move = ''
+  if FIRST_MOVE == 'choose'
+    loop do
+      prompt "Who goes first? Type 'p' for player or 'c' for computer"
+      first_move = gets.chomp
+      break if first_move.downcase.start_with?('p', 'c')
+      prompt "Invalid input. Please type 'p' or 'c'"
+    end
+  end
+
+  if first_move == 'p'
     loop do
       display_board(board, computer_wins, player_wins, ties)
 
@@ -129,20 +141,33 @@ loop do
       computer_places_piece!(board)
       break if someone_won?(board) || board_full?(board)
     end
+  elsif first_move == 'c'
+    loop do
+      display_board(board, computer_wins, player_wins, ties)
 
-    display_board(board, computer_wins, player_wins, ties)
+      computer_places_piece!(board)
+      display_board(board, computer_wins, player_wins, ties)
+      break if someone_won?(board) || board_full?(board)
 
-    if someone_won?(board)
-      prompt "#{detect_winner(board)} won!"
-      if detect_winner(board) == 'Player'
-        player_wins += 1
-      elsif detect_winner(board) == 'Computer'
-        computer_wins += 1
-      end
-    else
-      prompt "It's a tie!"
-      ties += 1
+      player_places_piece!(board)
+      break if someone_won?(board) || board_full?(board)
     end
+  end
+    
+
+  display_board(board, computer_wins, player_wins, ties)
+
+  if someone_won?(board)
+    prompt "#{detect_winner(board)} won!"
+    if detect_winner(board) == 'Player'
+      player_wins += 1
+    elsif detect_winner(board) == 'Computer'
+      computer_wins += 1
+    end
+  else
+    prompt "It's a tie!"
+    ties += 1
+  end
 
 
   if player_wins == 5 || computer_wins == 5
@@ -152,28 +177,8 @@ loop do
 end
 
 
-#   prompt "Play again? (y or n)"
-#   answer = gets.chomp
-#   break unless answer.downcase.start_with?('y')
-# end
-
 prompt "Thanks for playing Tac Tac Toe! Goodbye!"
 
-
-
-
-
-
-# def joinor(arr, delimiter=', ', word='or')
-#   case arr.size
-#   when 0 then ''
-#   when 1 then arr.first
-#   when 2 then arr.join(" #{word} ")
-#   else
-#     arr[-1] = "#{word} #{arr.last}"
-#     arr.jion(delimeter)
-#   end
-# end
 
 
 
