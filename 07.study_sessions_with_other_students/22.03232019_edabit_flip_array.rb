@@ -1,13 +1,13 @@
-# def flip_array(arr)
-#   return [] if arr == []
-#   output = ''
-#   if arr[0].class == Integer
-#     output = arr.map {|num| [num]}
-#   elsif arr[0].class == Array
-#     output = arr.map {|num| num.pop}
-#   end
-#   output
-# end
+def flip_array(arr)
+  return [] if arr == []
+  output = ''
+  if arr[0].class == Integer
+    output = arr.map {|num| [num]}
+  elsif arr[0].class == Array
+    output = arr.map {|num| num.pop}
+  end
+  output
+end
 
 
 def flip_array(arr)
