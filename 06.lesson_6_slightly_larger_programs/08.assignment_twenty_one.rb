@@ -15,8 +15,9 @@ end
 def initialize_deck
   new_deck = []
   suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
-  base_values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
-  base_values.each do |value| 
+  base_values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack'] +
+                ['Queen', 'King', 'Ace']
+  base_values.each do |value|
     suits.each do |suit|
       card = value + ' of ' + suit
       new_deck << card
@@ -32,49 +33,51 @@ def hit(deck, player)
 end
 
 def initial_deal(deck, player)
-  2.times do 
+  2.times do
     hit(deck, player)
   end
 end
 
 def value_of(hand)
-   values = hand.map do |card|
-      case
-      when card.start_with?('J', 'Q', 'K')
-        10
-      when card.start_with?(/\d/)
-        card.to_i
-      when card.start_with?('A')
-        "Ace!"
-      end
+  values = hand.map do |card|
+    if card.start_with?('J', 'Q', 'K')
+      10
+    elsif card.start_with?(/\d/)
+      card.to_i
+    elsif card.start_with?('A')
+      "Ace!"
     end
-    if values.include?("Ace!")
-      if values.select {|card| card != "Ace!"}.reduce(:+) > 10
-        values.map! do |card|
-          if card == "Ace!"
-            return 1
-          else
-            return card
-          end
-        end
-      else
-        values.map! do |card|
-          if card == "Ace!"
-            return 11
-          else
-            return card
-          end
+  end
+  if values.include?("Ace!")
+    if values.all?("Ace")
+      values = [1, 1]
+    end
+    if values.select { |card| card != "Ace!" }.reduce(:+) > 10
+      values.map! do |card|
+        if card == "Ace!"
+          1
+        else
+          card
         end
       end
+    else
+      values.map! do |card|
+        if card == "Ace!"
+          return 11
+        else
+          return card
+        end
+      end
     end
-    values.reduce(:+)
+  end
+  values.reduce(:+)
 end
 
 def busted?(hand)
   value_of(hand) > 21
 end
 
-def player_turn(deck, player_hand, dealer_hand)
+def player_turn(deck, player_hand)
   answer = nil
   loop do
     prompt "Would you like to hit, or stay?"
@@ -90,8 +93,30 @@ def player_turn(deck, player_hand, dealer_hand)
   else
     prompt "You chose to stay!"
   end
+end
 
+def dealer_turn(deck, dealer_hand)
+  loop do
+    break if busted?(dealer_hand) || value_of(dealer_hand) >= 17
+    hit(deck, dealer_hand)
+    prompt "Dealer hits. Dealer hand total: #{value_of(dealer_hand)}"
+  end
+end
 
+def final_score(player_hand, dealer_hand)
+  prompt "Player hand: #{player_hand} Total: #{value_of(player_hand)}"
+  prompt "Dealer hand: #{dealer_hand} Total #{value_of(dealer_hand)}"
+end
+
+def result(player_hand, dealer_hand)
+  if value_of(player_hand) > value_of(dealer_hand)
+    "Player wins!"
+  elsif value_of(dealer_hand) > value_of(player_hand)
+    "Dealer Wins"
+  else
+    "Its a tie!"
+  end
+  final_score
 end
 
 player_hand = []
@@ -101,17 +126,15 @@ deck = initialize_deck
 initial_deal(deck, player_hand)
 initial_deal(deck, dealer_hand)
 
-prompt "player hand: #{player_hand}"
-prompt "dealer hand: #{dealer_hand[0]}"
+prompt "dealer showing: #{dealer_hand[0]}"
 
-player_turn(deck, player_hand, dealer_hand)
-
+player_turn(deck, player_hand)
 prompt player_hand
 
-prompt "Number of cards left in deck: #{deck.count}"
-
-
-
-
-
-
+dealer_turn(deck, dealer_hand)
+if busted?(dealer_hand)
+  prompt "Dealer busted. Game over. You win!"
+  final_score(player_hand, dealer_hand)
+else
+  result(player_hand, dealer_hand)
+end
