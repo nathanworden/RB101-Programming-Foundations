@@ -26,26 +26,26 @@
 
 # Code
 
-# NUMBERS = {'one' => '1', 'two' => '2', 'three' => '3', 'four' => '4', 'five' => '5', 'six' => '6', 'seven' => '7', 'eight' => '8', 'nine' => '9'}
+NUMBERS = {'one' => '1', 'two' => '2', 'three' => '3', 'four' => '4', 'five' => '5', 'six' => '6', 'seven' => '7', 'eight' => '8', 'nine' => '9'}
 
-# def word_to_digit(string)
-#   string.split.map do |word|
-#     if word.end_with?(".")
-#       word.delete!(".")
-#       if NUMBERS.keys.include?(word)
-#         NUMBERS[word] + "."
-#       else
-#         word + "."
-#       end
-#     else
-#       if NUMBERS.keys.include?(word)
-#         NUMBERS[word]
-#       else
-#         word
-#       end
-#     end
-#   end.join(" ")
-# end
+def word_to_digit(string)
+  string.split.map do |word|
+    if word.end_with?(".")
+      word.delete!(".")
+      if NUMBERS.keys.include?(word)
+        NUMBERS[word] + "."
+      else
+        word + "."
+      end
+    else
+      if NUMBERS.keys.include?(word)
+        NUMBERS[word]
+      else
+        word
+      end
+    end
+  end.join(" ")
+end
 
 
 
@@ -56,14 +56,14 @@
 
 
 # Book Answer
-DIGIT_HASH = {
-  'zero' => '0', 'one' => '1', 'two' => '2', 'three' => '3', 'four' => '4',
-  'five' => '5', 'six' => '6', 'seven' => '7', 'eight' => '8', 'nine' => '9'
-}.freeze
+# DIGIT_HASH = {
+#   'zero' => '0', 'one' => '1', 'two' => '2', 'three' => '3', 'four' => '4',
+#   'five' => '5', 'six' => '6', 'seven' => '7', 'eight' => '8', 'nine' => '9'
+# }.freeze
 
-def word_to_digit(words)
-  DIGIT_HASH.keys
-end
+# def word_to_digit(words)
+#   DIGIT_HASH.keys
+# end
 
 p word_to_digit('Please call me at five five five one two three four. Thanks.') == 'Please call me at 5 5 5 1 2 3 4. Thanks.'
 
