@@ -38,19 +38,19 @@
 #Code
 
 
-# def block_word?(string)
-#   block_alphabet = {'B'=>'O', 'X'=>'K', 'D' => 'Q', 'C' => 'P', 'N' => 'A', 
-#                   'G' => 'T', 'R' => 'E', 'F' => 'S', 'J' => 'W', 'H' => 'U',
-#                   'V' =>'I', 'L' => 'Y', 'Z' => 'M'}
-#   string.upcase.chars.each do |letter|
-#     if block_alphabet.keys.include?(letter) || block_alphabet.values.include?(letter)
-#       block_alphabet.delete_if {|key, value| key == letter || value == letter}
-#     else
-#       return false
-#     end
-#   end
-#   true
-# end
+def block_word?(string)
+  block_alphabet = {'B'=>'O', 'X'=>'K', 'D' => 'Q', 'C' => 'P', 'N' => 'A', 
+                  'G' => 'T', 'R' => 'E', 'F' => 'S', 'J' => 'W', 'H' => 'U',
+                  'V' =>'I', 'L' => 'Y', 'Z' => 'M'}
+  string.upcase.chars.each do |letter|
+    if block_alphabet.keys.include?(letter) || block_alphabet.values.include?(letter)
+      block_alphabet.delete_if {|key, value| key == letter || value == letter}
+    else
+      return false
+    end
+  end
+  true
+end
 
 
 # p block_word?('jest') == true
@@ -75,47 +75,6 @@
 # p block_word?('Nathan') == false
 # p block_word?('orange') == false
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Second try
-
-BLOCKS = %w('BO', 'GT', 'VI', 'XK', 'RE', 'LY', 'DQ', 'FS', 'ZM', 'CP', 'JW', 'NA', 'HU').freeze
-
-
-def block_word?(string)
-  up_string = string.upcase
-  BLOCKS.none? {|block| up_string.count(block) >= 2}
-end
-
-
-p block_word?('jest') == true
-p block_word?('BATCH') == true
-p block_word?('BUTCH') == false
-p block_word?('Nathan') == false
-p block_word?('orange') == false
 
 
 
