@@ -38,7 +38,7 @@ def bubble_sort!(array)
   loop do
     index = 0
     changes = false
-    (array.size - 1).times do
+    (array.size - 1 - index).times do
       if array[index] > array[index + 1]
         array[index], array[index + 1] = array[index + 1], array[index]
         changes = true
@@ -50,9 +50,28 @@ def bubble_sort!(array)
   array
 end
 
-array = [5, 3]
-p bubble_sort!(array)
-p array == [3, 5]
+
+# def bubble_sort!(arr)
+#   bound = arr.size - 1
+#   swap = false
+
+#   while !swap
+#     bound -= 1
+#     swap = true
+#     for i in 0..bound
+#       if arr[i] > arr[i+1]
+#         arr[i], arr[i+1] = arr[i+1], arr[i]
+#         swap = false
+#       end
+#     end
+#   end
+
+#   arr
+# end
+
+# array = [5, 3]
+# p bubble_sort!(array)
+# p array == [3, 5]
 
 array = [6, 2, 7, 1, 4]
 p bubble_sort!(array)
