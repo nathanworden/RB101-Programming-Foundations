@@ -6,6 +6,8 @@
 
 # Algorithm
 
+# names = ["Sheldon", "Leonard", "Penny", "Rajesh", "Howard"]
+
 
 def who_is_next(names, r)
   index = 0
@@ -18,6 +20,7 @@ def who_is_next(names, r)
   names[-2]
 end
 
-p who_is_next(["Sheldon", "Leonard", "Penny", "Rajesh", "Howard"], 1) #== "Sheldon"
+# p who_is_next(["Sheldon", "Leonard", "Penny", "Rajesh", "Howard"], 1) #== "Sheldon"
+p who_is_next(names, 52) #== "Penny"
 p who_is_next(["Sheldon", "Leonard", "Penny", "Rajesh", "Howard"], 52) #== "Penny"
-p who_is_next(["Sheldon", "Leonard", "Penny", "Rajesh", "Howard"], 53) #== "Penny"
+# p who_is_next(["Sheldon", "Leonard", "Penny", "Rajesh", "Howard"], 53) #== "Penny"

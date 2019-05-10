@@ -42,7 +42,8 @@
 
 # My answer refactored
 
-text = File.read("../../../../../../Desktop/Frankenstein_.txt")
+# text = File.read("../../../../../../Desktop/Frankenstein_.txt")
+text = File.read("Frankenstein_text.txt")
 
 def longest_sentence(text)
   sentences = text.split(/!|\?|\./)
