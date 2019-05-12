@@ -37,43 +37,51 @@
 
 # Code
 
-# def star(integer)
-#   eight_point = []
-#   front_star = 0
-#   back_star = -1
+def star(integer)
+  eight_point = []
+  front_star = 0
+  back_star = -1
 
-#   (integer/2).times do 
-#     current_row = Array.new(integer, " ")
-#     current_row[front_star], current_row[back_star], current_row[integer/2] = "*", "*", "*"
-#     eight_point << current_row
-#     front_star += 1
-#     back_star -= 1
-#   end
+  (integer/2).times do 
+    current_row = Array.new(integer, " ")
+    current_row[front_star], current_row[back_star], current_row[integer/2] = "*", "*", "*"
+    eight_point << current_row
+    front_star += 1
+    back_star -= 1
+  end
 
-#   back_half = eight_point.clone.reverse
-#   eight_point << Array.new(integer, "*")
-#   back_half.each {|array| eight_point << array}
+  back_half = eight_point.clone.reverse
+  eight_point << Array.new(integer, "*")
+  back_half.each {|array| eight_point << array}
 
-#   eight_point.each do |line| 
-#       line.each {|char| print char}
-#       puts
-#     end
-# end
+  eight_point.each do |line| 
+      line.each {|char| print char}
+      puts
+    end
+end
 
-# star(9)
+star(9)
 
 
 
 # Book Answer
 
-def print_row(grid_size, distance_from_center)
+# def print_row(grid_size, distance_from_center)
+#   number_of_spaces = distance_from_center - 1
+#   spaces = ' ' * number_of_spaces
+#   output = Array.new(3, '*').join(spaces)
+#   puts output.center(grid_size)
+# end
 
-end
+# def star(grid_size)
+#   max_distance = (grid_size - 1) / 2
+#   max_distance.downto(1) {|distance| print_row(grid_size, distance)}
+#   puts '*' * grid_size
+#   1.upto(max_distance) {|distance| print_row(grid_size, distance)}
+# end
 
 
-
-
-
+# star(9)
 
 
 
