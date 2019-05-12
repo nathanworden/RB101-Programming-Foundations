@@ -1,0 +1,18 @@
+Once upon a time near the hills of Levendale, a young %{noun1} met his %{noun2} for the %{number1}th time.
+
+“Me llamo %{name1}” the young %{noun1} told his %{noun2}.
+
+“Me llamo %{name2}” said the %{noun2}.
+
+“NOW WE %{verb1} TO THE DEATH” said a frog %{gerund} nearby.
+
+“I don’t want to %{verb1} my %{noun2}!” said %{name1}.
+
+“I don’t want to speak Spanish!” said %{name2}.
+
+This is the part of the story where we put all your %{adjective1}, %{adjective2}, %{adjective3}, adjectives.
+
+I mean, really, %{your_name}, your adjectives are literally so %{adjective4}, that you decided to put 
+“%{adjective5}” as an adjective. Great work. I hope you are happy.
+
+The end.

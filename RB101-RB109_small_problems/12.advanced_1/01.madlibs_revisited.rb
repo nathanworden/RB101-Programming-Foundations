@@ -1,4 +1,4 @@
-text =  File.read("dumb_story.rb")
+
 
 # madlibs = {"NOUN_1" => "Llama", "NOUN_2" => "father", "NUMBER" => "1st", "NAME_1" => "Yano", 
 #             "NAME_2" => "Lloyd", "VERB_1" => "FIGHT", "GERUND" => "sitting", 
@@ -6,19 +6,21 @@ text =  File.read("dumb_story.rb")
 #             "ADJECTIVE_3" => "itchy", "ADJECTIVE_4" => "lumpy", 
 #             "ADJECTIVE_5" => "moist", "YOUR_NAME" => "Nathan"}
 
-madlibs = {"NOUN_1" => "Cat", "NOUN_2" => "Table", "NUMBER" => "7th", "NAME_1" => "Albert", 
-            "NAME_2" => "Nathan", "VERB_1" => "SLAP", "GERUND" => "smiling", 
-            "ADJECTIVE_1" => "happy", "ADJECTIVE_2" => "dark", 
-            "ADJECTIVE_3" => "smelly", "ADJECTIVE_4" => "dirty", 
-            "ADJECTIVE_5" => "upset", "YOUR_NAME" => "Matt"}
+# madlibs = {"NOUN_1" => "Cat", "NOUN_2" => "Table", "NUMBER" => "7th", "NAME_1" => "Albert", 
+#             "NAME_2" => "Nathan", "VERB_1" => "SLAP", "GERUND" => "smiling", 
+#             "ADJECTIVE_1" => "happy", "ADJECTIVE_2" => "dark", 
+#             "ADJECTIVE_3" => "smelly", "ADJECTIVE_4" => "dirty", 
+#             "ADJECTIVE_5" => "upset", "YOUR_NAME" => "Matt"}
 
-# madlibs = {"NOUN_1" => "Tiger", "NOUN_2" => "Air-Baloon", "NUMBER" => "9th", "NAME_1" => "Spartcus", 
-#             "NAME_2" => "Germain", "VERB_1" => "LANCE", "GERUND" => "parkaruing", 
-#             "ADJECTIVE_1" => "flamboyant", "ADJECTIVE_2" => "lagubrious", 
-#             "ADJECTIVE_3" => "nonchlant", "ADJECTIVE_4" => "altered", 
-#             "ADJECTIVE_5" => "charismatic", "YOUR_NAME" => "Albert"}
+madlibs = {"NOUN_1" => "Tiger", "NOUN_2" => "Air-Baloon", "NUMBER" => "9th", "NAME_1" => "Spartcus", 
+            "NAME_2" => "Germain", "VERB_1" => "LANCE", "GERUND" => "parkaruing", 
+            "ADJECTIVE_1" => "flamboyant", "ADJECTIVE_2" => "lagubrious", 
+            "ADJECTIVE_3" => "nonchlant", "ADJECTIVE_4" => "altered", 
+            "ADJECTIVE_5" => "charismatic", "YOUR_NAME" => "Albert"}
 
-
+# text =  File.read("story.txt")
+# Or the story with adjectives:
+text = File.read("dumb_story.rb")
 
   no_periods = text.gsub(/\./, ' period. ')
   # text = no_periods.gsub(/\R+/, 'NEW_PARAGRAPH')
