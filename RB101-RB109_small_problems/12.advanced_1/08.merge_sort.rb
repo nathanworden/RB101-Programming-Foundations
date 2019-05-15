@@ -5,6 +5,9 @@
 
 # Code
 
+# This solution is from here:
+# https://gist.github.com/aspyct/3433278
+
 def merge_sort(array)
   if array.size <= 1
     return array
