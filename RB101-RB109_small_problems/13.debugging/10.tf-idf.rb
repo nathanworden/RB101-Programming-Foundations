@@ -20,7 +20,7 @@ end
 # (the rarer it is, the more information it provides)
 
 def idf(term, documents)
-  number_of_documents = documents.length
+  number_of_documents = documents.length.to_f
   number_of_documents_with_term = documents.count { |d| tf(term, d) > 0 }
 
   Math.log(number_of_documents / number_of_documents_with_term)
@@ -44,7 +44,7 @@ document3 = "One of the core values that sets Launch School apart from some othe
 "such as a systematic problem-solving approach or learning how to deconstruct a programming language or building sound mental representations of how web application work. Everything we're trying to do at " +
 "Launch School is with an eye towards sustainable studying habits and building skills for a long-term career."
 
-documents = [document1, document2, document3]
+documents = [document2, document3]
 
 # The higher the tf-idf score of a term for a document, the more informative
 # it is for that document.
@@ -56,15 +56,15 @@ documents = [document1, document2, document3]
 puts tfidf("cat", document1, documents) # ~ 1.2
 puts tfidf("cat", document2, documents) # ~ 1.6
 puts tfidf("cat", document3, documents) # 0
-
+puts
 puts tfidf("quantum", document1, documents) # ~ 5.5
 puts tfidf("quantum", document2, documents) # 0
 puts tfidf("quantum", document3, documents) # 0
-
+puts
 puts tfidf("mastery", document1, documents) # 0
 puts tfidf("mastery", document2, documents) # 0
 puts tfidf("mastery", document3, documents) # ~ 3.3
-
+puts
 puts tfidf("some", document1, documents) # 0
 puts tfidf("some", document2, documents) # ~ 0.4
 puts tfidf("some", document3, documents) # ~ 0.4
