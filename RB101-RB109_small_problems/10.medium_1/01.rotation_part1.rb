@@ -28,19 +28,20 @@
 
 # Code
 
-# def rotate_array(array)
-#   result = []
-#   1.upto(array.size - 1) {|index| result << array[index]}
-#   result << array[0]
-#   result
-# end
-
-
-def rotate_array(arr)
-  first_el = arr.shift
-  arr << first_el
-  arr
+def rotate_array(array)
+  result = []
+  1.upto(array.size - 1) {|index| result << array[index]}
+  result << array[0]
+  result
 end
+
+
+# mutation method
+# def rotate_array(arr)
+#   first_el = arr.shift
+#   arr << first_el
+#   arr
+# end
 
 
 
@@ -49,9 +50,9 @@ p rotate_array(['a', 'b', 'c']) == ['b', 'c', 'a']
 p rotate_array(['a']) == ['a']
 p rotate_array(['apple', 6292, 'banana', 98, 'tritip', '1']) == [6292, 'banana', 98, 'tritip', '1', 'apple']
 
-p ax = [1, 2, 3, 4]
-p rotate_array(x) #== [2, 3, 4, 1]   # => true
-p x #== [1, 2, 3, 4]     # => true
+x = [1, 2, 3, 4]
+p rotate_array(x) == [2, 3, 4, 1]   #== true
+p x == [1, 2, 3, 4]     # => true
 
 
 # Book Answer
