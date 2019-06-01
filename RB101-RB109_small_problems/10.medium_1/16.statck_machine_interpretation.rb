@@ -114,17 +114,14 @@ require 'pry'
 
 # More Further Exploration
 
+
 def minilang(string)
+  error = 'Error: Operation on empty stack!'
+  checked_for_empty_stack = %(POP ADD SUB MULT DIV MOD)
   stack = []
   register = 0
-  array = string.split.map do |element| 
-    if element.to_i != 0
-      element.to_i
-    else
-      element
-    end
-  end
-  array.each do |element|
+  string.split.each do |element|
+    return p error if stack.empty? && checked_for_empty_stack.include?(element)
     case element
     when 'PUSH'
       stack << register
@@ -142,16 +139,53 @@ def minilang(string)
       register = stack.pop
     when 'PRINT'
       puts register
+    when /[0-9]+/
+      register = element.to_i
     else
-      register = element
+      p 'Not a valid token'
     end
   end
   nil
 end
 
 
+# minilang('5 ADD PUSH 10 MULT PRINT')
+
+minilang('Marmaduke 4 PUSH 5 ADD')
+
+p minilang('PRINT')
+# # 0
+
+p minilang('5 PUSH 3 MULT PRINT')
+# 15
+
+p minilang('5 PRINT PUSH 3 PRINT ADD PRINT')
+# 5
+# 3
+# 8
+
+p minilang('5 PUSH POP PRINT')
+# 5
+
+p minilang('3 PUSH 4 PUSH 5 PUSH PRINT ADD PRINT POP PRINT ADD PRINT')
+# 5
+# 10
+# 4
+# 7
+
+p minilang('3 PUSH PUSH 7 DIV MULT PRINT ')
+# 6
+
+p minilang('4 PUSH PUSH 7 MOD MULT PRINT ')
+# 12
+
+p minilang('-3 PUSH 5 SUB PRINT')
+# 8
+
+p minilang('6 PUSH')
+# (nothing printed; no PRINT commands)
 
 
-minilang('5 ADD PUH 10 MULT PRINT')
+
 
 
